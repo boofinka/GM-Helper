@@ -1,0 +1,172 @@
+{
+  "items": [
+    {
+      "id": "item_001",
+      "settings": ["fantasy"],
+      "tags": ["weapon", "mundane", "worn"],
+      "adjectives": ["battered", "well-worn", "nicked", "heavy"],
+      "types": ["short sword", "hand axe", "dagger", "mace"],
+      "materials": ["iron", "dull steel", "dark iron", "pitted bronze"],
+      "histories": [
+        "The grip is wrapped in leather so old it's become part of the handle.",
+        "Notches along the blade suggest it has seen real use — and real consequences.",
+        "Someone has scratched a name into the pommel, worn too smooth to read.",
+        "It's been repaired at least twice, and not by anyone particularly skilled."
+      ],
+      "quirks": [
+        "It's very slightly heavier than it looks.",
+        "It always seems to be slightly colder than the air around it.",
+        "It makes no sound at all when drawn.",
+        "There's a faint smell of smoke about it that doesn't wash off."
+      ],
+      "template": "A {adj} {material} {type}. {history} {quirk}"
+    },
+    {
+      "id": "item_002",
+      "settings": ["fantasy", "supernatural"],
+      "tags": ["container", "mysterious", "found"],
+      "adjectives": ["locked", "ornate", "plain", "heavy"],
+      "types": ["box", "chest", "coffer", "casket"],
+      "materials": ["darkwood", "tarnished silver", "black iron", "pale bone"],
+      "histories": [
+        "The lock is of a design no one in the party recognises.",
+        "It has been sealed with wax bearing a crest that has been partially scratched off.",
+        "The hinges are on the inside. There are no visible hinges on the outside.",
+        "It hums faintly when held — or perhaps that's just your hands."
+      ],
+      "quirks": [
+        "Whatever is inside shifts when you tilt it, but makes no sound.",
+        "It is exactly the right size to be suspicious.",
+        "The wood is warm, as if it has been sitting in sunlight — it hasn't.",
+        "It smells faintly of a place none of you have been."
+      ],
+      "template": "A {adj} {material} {type}. {history} {quirk}"
+    },
+    {
+      "id": "item_003",
+      "settings": ["fantasy", "supernatural"],
+      "tags": ["magical", "rare", "weapon"],
+      "adjectives": ["ancient", "humming", "cold", "unsettling"],
+      "types": ["blade", "staff", "orb", "amulet"],
+      "materials": ["pale crystal", "black glass", "living silver", "cold iron"],
+      "histories": [
+        "The script engraved along its surface is in a language that predates the kingdom.",
+        "It has clearly been broken and reforged — the seam is almost invisible.",
+        "Every scholar who has examined it has disagreed about what it is.",
+        "It appears in the background of a painting in the city's civic hall."
+      ],
+      "quirks": [
+        "Animals become quiet in its presence.",
+        "It casts no shadow in direct sunlight.",
+        "Those who touch it report dreaming of the same place that night.",
+        "It is always exactly at body temperature, regardless of conditions."
+      ],
+      "template": "An {adj} {material} {type}. {history} {quirk}"
+    },
+    {
+      "id": "item_004",
+      "settings": ["fantasy", "noir"],
+      "tags": ["mundane", "document", "clue"],
+      "adjectives": ["crumpled", "water-damaged", "coded", "unsigned"],
+      "types": ["letter", "map", "journal page", "manifest", "receipt"],
+      "materials": ["cheap parchment", "fine vellum", "torn cloth", "bark paper"],
+      "histories": [
+        "The ink has run in places, but the important parts are still legible.",
+        "It has been folded and unfolded so many times the creases are near-tears.",
+        "Several lines have been struck through — forcefully, not neatly.",
+        "There are two different handwritings. They don't agree with each other."
+      ],
+      "quirks": [
+        "The date given is either six years ago or six years from now, depending on the calendar.",
+        "A name has been removed so thoroughly it's left a hole.",
+        "The margins are filled with tiny, anxious annotations.",
+        "It smells of a specific perfume or pipe tobacco — someone would recognise it."
+      ],
+      "template": "A {adj} {type} on {material}. {history} {quirk}"
+    },
+    {
+      "id": "item_005",
+      "settings": ["scifi"],
+      "tags": ["weapon", "tech", "worn"],
+      "adjectives": ["scarred", "jury-rigged", "military-surplus", "decommissioned"],
+      "types": ["sidearm", "carbine", "stun baton", "blade"],
+      "materials": ["matte composite", "scuffed titanium", "recycled alloy", "ceramic composite"],
+      "histories": [
+        "The serial number has been ground off. Professionally.",
+        "Three different repair patches cover three different incidents no one discusses.",
+        "It's been recalibrated so many times the original settings are a memory.",
+        "A unit insignia is etched into the grip — the unit no longer exists."
+      ],
+      "quirks": [
+        "It runs slightly hot. Not dangerously. Probably.",
+        "The safety indicator light hasn't worked in years. You check manually.",
+        "It makes a sound on startup that the manual says it shouldn't make.",
+        "Previous owners have left the grip worn smooth in exactly the right places."
+      ],
+      "template": "A {adj} {material} {type}. {history} {quirk}"
+    },
+    {
+      "id": "item_006",
+      "settings": ["scifi"],
+      "tags": ["tech", "mysterious", "found"],
+      "adjectives": ["unregistered", "encrypted", "unfamiliar", "modified"],
+      "types": ["data chip", "comm unit", "drive", "device"],
+      "materials": ["black resin", "unmarked alloy", "clear polymer", "shielded composite"],
+      "histories": [
+        "No manufacturer marking. No registry signature. Nothing to trace.",
+        "It's been wiped — but not as thoroughly as whoever wiped it believed.",
+        "The casing shows signs of having been opened and resealed multiple times.",
+        "It was found somewhere it has no obvious reason to be."
+      ],
+      "quirks": [
+        "Standard readers don't recognise the format.",
+        "It draws slightly more power than its size suggests it should.",
+        "It has been accessed recently. Not by anyone in this room.",
+        "Whatever's on it, someone went to real effort to move it by hand rather than transmit it."
+      ],
+      "template": "An {adj} {material} {type}. {history} {quirk}"
+    },
+    {
+      "id": "item_007",
+      "settings": ["noir"],
+      "tags": ["mundane", "clue", "personal"],
+      "adjectives": ["monogrammed", "pawned", "borrowed", "expensive"],
+      "types": ["lighter", "watch", "ring", "photograph", "card"],
+      "materials": ["tarnished silver", "cheap gold plate", "worn leather", "cracked enamel"],
+      "histories": [
+        "It belongs to someone. Finding out who is either simple or complicated.",
+        "It's been reported stolen. The report was filed by the wrong person.",
+        "Someone kept this a long time before leaving it somewhere it would be found.",
+        "It changed hands at least twice recently. The second time wasn't voluntary."
+      ],
+      "quirks": [
+        "The inscription on the back is in a handwriting that appears elsewhere in the case.",
+        "It's worth more than it looks, or less — hard to say which is worse.",
+        "The date on it doesn't line up with the story you've been told.",
+        "Somebody is going to ask about this before the night is over."
+      ],
+      "template": "A {adj} {material} {type}. {history} {quirk}"
+    },
+    {
+      "id": "item_008",
+      "settings": ["supernatural"],
+      "tags": ["magical", "dangerous", "found"],
+      "adjectives": ["cold", "wrong", "patient", "heavy"],
+      "types": ["mirror", "doll", "key", "candle", "effigy"],
+      "materials": ["black wax", "pale wood", "clouded glass", "knotted cord"],
+      "histories": [
+        "It was found in a place where it should not have survived intact.",
+        "Three different people have tried to destroy it. None of them finished the attempt.",
+        "It has been left as an offering, an inheritance, and a warning at different points in its history.",
+        "Someone went to considerable trouble to conceal it. Different someone went to trouble to find it."
+      ],
+      "quirks": [
+        "It is always slightly too cold to have been sitting in this room.",
+        "Reflective surfaces near it show something slightly different from what's actually there.",
+        "Those who hold it too long report the same dream.",
+        "It is heavier when carried toward certain places than others."
+      ],
+      "template": "A {adj} {material} {type}. {history} {quirk}"
+    }
+  ]
+}

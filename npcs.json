@@ -1,0 +1,186 @@
+{
+  "npcs": [
+    {
+      "id": "npc_001",
+      "settings": ["fantasy"],
+      "tags": ["urban", "merchant", "neutral"],
+      "first_names": ["Aldric", "Maren", "Torvin", "Sela", "Bram", "Liora"],
+      "epithets": ["the Twice-Burned", "of the Lower City", "the Younger", "Fairhand"],
+      "appearances": [
+        "a stout figure with ink-stained fingers and a permanent squint",
+        "a tall, angular person whose expensive clothes are slightly too big",
+        "a small, quick-eyed individual who never seems to stop moving",
+        "someone whose face is arranged into a permanent expression of mild suspicion"
+      ],
+      "mannerisms": [
+        "constantly straightens objects on any nearby surface",
+        "repeats the last word of sentences twice, twice",
+        "makes prolonged eye contact as if waiting for you to confess something",
+        "laughs too loudly at their own observations"
+      ],
+      "secrets": [
+        "is fencing goods for a thieves' guild without fully realising it",
+        "owes a life debt to someone in this very town",
+        "their most valuable item was stolen and replaced with a copy — they haven't noticed yet",
+        "is saving to flee the city and start over somewhere no one knows their name"
+      ],
+      "template": "You meet {name} — {appearance}. They {mannerism}. {secret_hint}"
+    },
+    {
+      "id": "npc_002",
+      "settings": ["fantasy"],
+      "tags": ["dungeon", "hostile", "guard"],
+      "first_names": ["Grak", "Voss", "Munda", "Sel", "Dreth", "Horg"],
+      "epithets": ["Ironjaw", "the Scarred", "Twice-Dead", "Bonecrusher"],
+      "appearances": [
+        "a broad-shouldered brute whose armour is held together with wire and spite",
+        "a lean, scarred fighter who moves with unsettling quiet for their size",
+        "someone who looks like they have absorbed several previous adventuring parties",
+        "a hulking figure whose eyes suggest they are not entirely present"
+      ],
+      "mannerisms": [
+        "cracks their knuckles one at a time while speaking",
+        "refers to violence as 'sorting things out'",
+        "addresses the largest member of the party exclusively",
+        "seems almost relieved at the prospect of a fight"
+      ],
+      "secrets": [
+        "is loyal to their employer out of fear, not conviction",
+        "has a family somewhere they send coin to — no one here knows",
+        "is looking for an excuse to switch sides",
+        "has a genuine phobia that would surprise anyone who met them"
+      ],
+      "template": "Barring your path is {name} — {appearance}. They {mannerism}."
+    },
+    {
+      "id": "npc_003",
+      "settings": ["fantasy", "noir"],
+      "tags": ["urban", "quest_giver", "distressed"],
+      "first_names": ["Elara", "Cormac", "Desta", "Willum", "Nessa", "Fjord"],
+      "epithets": ["the Worried", "of Millhaven", "the Elder", "Coppersmith"],
+      "appearances": [
+        "a haggard person with the look of someone who hasn't slept in days",
+        "someone whose respectable clothes are rumpled from being slept in",
+        "a figure who keeps glancing over their shoulder mid-sentence",
+        "someone with the kind of face that's used to smiling, currently failing at it"
+      ],
+      "mannerisms": [
+        "wrings their hands continuously while speaking",
+        "lowers their voice whenever saying anything important",
+        "starts sentences three times before finishing one",
+        "apologises preemptively for everything they're about to say"
+      ],
+      "secrets": [
+        "the problem they need solved is partly their own fault",
+        "they've already tried hiring someone else — it didn't go well",
+        "the reward they're offering is most of what they have left",
+        "they know more than they're saying, and know that you know"
+      ],
+      "template": "Approaching you is {name} — {appearance}. They {mannerism}. {secret_hint}"
+    },
+    {
+      "id": "npc_004",
+      "settings": ["scifi"],
+      "tags": ["urban", "merchant", "neutral"],
+      "first_names": ["Vex", "Sable", "Orrin", "Dara", "Keiss", "Miru"],
+      "epithets": ["Seven", "of Deck Four", "the Unlicensed", "Patchwork"],
+      "appearances": [
+        "a wiry figure with subdermal port scars running up both forearms",
+        "someone in a patched envirosuit who clearly lives out of their ship",
+        "a person whose left eye is clearly a replacement — a cheaper model than the right",
+        "a compact individual with the kind of stillness that comes from spending time in zero-g"
+      ],
+      "mannerisms": [
+        "runs a thumb over a transaction chip between sentences, a nervous habit",
+        "speaks quietly and precisely, as if conserving air",
+        "checks the exits before answering any question",
+        "refers to everyone as 'friend' in a way that means the opposite"
+      ],
+      "secrets": [
+        "is moving cargo for someone they've never met in person",
+        "their ship's registration doesn't match the hull number",
+        "is three payments behind on an augmentation loan they can't default on",
+        "knows something about the destination that they're not volunteering"
+      ],
+      "template": "You're approached by {name} — {appearance}. They {mannerism}."
+    },
+    {
+      "id": "npc_005",
+      "settings": ["scifi"],
+      "tags": ["hostile", "corporate", "authority"],
+      "first_names": ["Agent", "Officer", "Auditor", "Specialist"],
+      "epithets": ["Harlan", "Voss-7", "Reyes", "Tanaka"],
+      "appearances": [
+        "someone in an unmarked uniform that costs more than your ship",
+        "a person whose expression suggests they find you professionally disappointing",
+        "a tall, precise individual who writes everything down even when there's nothing to write",
+        "someone who looks exactly like what they are, which is somehow the most unsettling thing"
+      ],
+      "mannerisms": [
+        "records everything without commenting on any of it",
+        "asks questions they clearly already know the answers to",
+        "has a habit of letting silences run longer than comfortable",
+        "uses corporate language so fluently it no longer sounds like words"
+      ],
+      "secrets": [
+        "their actual orders differ from the ones they've presented",
+        "has been building a private file on someone in the crew",
+        "disagrees with what they've been sent to do but will do it anyway",
+        "is in contact with a party the crew would find surprising"
+      ],
+      "template": "Blocking your way is {name} {epithet} — {appearance}. They {mannerism}."
+    },
+    {
+      "id": "npc_006",
+      "settings": ["noir"],
+      "tags": ["urban", "informant", "neutral"],
+      "first_names": ["Sal", "Mickey", "Dottie", "Lou", "Frankie", "Vera"],
+      "epithets": ["the Mouth", "Two-Times", "from the Eastside", "Fingertips"],
+      "appearances": [
+        "a small, forgettable person who has turned forgettability into a career",
+        "someone nursing a drink they've been making last since noon",
+        "a person dressed for a better decade in clothes that haven't caught up",
+        "someone whose eyes move more than the rest of them"
+      ],
+      "mannerisms": [
+        "never faces the door directly but always knows who comes through it",
+        "speaks without moving their lips much, an old habit",
+        "names a price before answering, even before knowing the question",
+        "laughs at nothing, briefly, then stops"
+      ],
+      "secrets": [
+        "sells to more than one side and keeps them all believing they're the only one",
+        "knows something they haven't put a price on yet because they're scared of it",
+        "owes someone dangerous a favour they've been putting off",
+        "is being watched right now and is hoping you haven't noticed either"
+      ],
+      "template": "You find {name} {epithet} — {appearance}. They {mannerism}."
+    },
+    {
+      "id": "npc_007",
+      "settings": ["supernatural"],
+      "tags": ["mysterious", "ambiguous", "neutral"],
+      "first_names": ["the figure", "the woman", "the man", "the child", "the stranger"],
+      "epithets": ["at the window", "from the portrait", "who was not there before", "without a shadow"],
+      "appearances": [
+        "someone whose face you keep failing to fully remember even while looking at it",
+        "a person dressed in the fashion of forty years ago, looking entirely comfortable",
+        "someone who is standing slightly too still for how long they've been standing",
+        "a figure who seems to occupy the room differently than everyone else in it"
+      ],
+      "mannerisms": [
+        "answers questions with information you didn't ask for and probably needed",
+        "refers to recent events in the past tense before they've concluded",
+        "knows your name. Does not explain how.",
+        "looks at empty spaces in the room as if they aren't empty"
+      ],
+      "secrets": [
+        "is not entirely present in the conventional sense",
+        "has been waiting here for a specific person. May or may not be you.",
+        "knows how this ends. Is curious whether knowing would help.",
+        "is not what they appear to be, which is itself not what it appears to be"
+      ],
+      "template": "You notice {name} {epithet} — {appearance}. They {mannerism}."
+    }
+  ]
+}

@@ -1,0 +1,370 @@
+package com.example.ttrpghelper.ui.screens
+
+import androidx.compose.animation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.work.WorkInfo
+import com.example.ttrpghelper.data.local.AppDatabase
+import com.example.ttrpghelper.data.local.ContentEntry
+import com.example.ttrpghelper.data.sync.ContentDownloader
+import com.example.ttrpghelper.data.sync.ContentSyncWorker
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+import kotlin.random.Random
+
+// ── Category, Setting & Tag config ───────────────────────────────────────────
+
+enum class Category(val label: String, val key: String) {
+    SCENES("Scenes", "scenes"),
+    NPCS("NPCs",     "npcs"),
+    ITEMS("Items",   "items"),
+}
+
+enum class Setting(val label: String, val key: String, val emoji: String) {
+    ANY(         "Any",           "any",          "🎲"),
+    FANTASY(     "Fantasy",       "fantasy",      "⚔️"),
+    SCIFI(       "Sci-Fi",        "scifi",        "🚀"),
+    NOIR(        "Noir",          "noir",         "🕵️"),
+    SUPERNATURAL("Supernatural",  "supernatural", "👻"),
+}
+
+// Tags available per category — extend as your content bank grows
+val TAGS_BY_CATEGORY = mapOf(
+    Category.SCENES to listOf("Any", "dungeon", "urban", "wilderness", "tavern", "abandoned", "eerie", "outdoor"),
+    Category.NPCS   to listOf("Any", "merchant", "hostile", "quest_giver", "informant", "mysterious", "authority"),
+    Category.ITEMS  to listOf("Any", "weapon", "magical", "mundane", "document", "tech", "clue", "container"),
+)
+
+// ── Screen ────────────────────────────────────────────────────────────────────
+
+@Composable
+fun GeneratorScreen() {
+    val context = LocalContext.current
+    val scope   = rememberCoroutineScope()
+    val db      = remember { AppDatabase.getInstance(context) }
+    val downloader = remember { ContentDownloader(context) }
+
+    // UI state
+    var selectedCategory by remember { mutableStateOf(Category.SCENES) }
+    var selectedSetting  by remember { mutableStateOf(Setting.ANY) }
+    var selectedTag      by remember { mutableStateOf("Any") }
+    var generatedText    by remember { mutableStateOf<String?>(null) }
+    var isLoading        by remember { mutableStateOf(false) }
+
+    // Update banner state
+    var showUpdateBanner  by remember { mutableStateOf(false) }
+    var pendingVersion    by remember { mutableIntStateOf(-1) }
+    var isDownloading     by remember { mutableStateOf(false) }
+
+    // ── Startup sync check ────────────────────────────────────────────────────
+    val workInfo by ContentSyncWorker
+        .enqueueStartupCheck(context)
+        .observeAsState()
+
+    LaunchedEffect(workInfo?.state) {
+        if (workInfo?.state == WorkInfo.State.SUCCEEDED) {
+            val status = workInfo?.outputData?.getString(ContentSyncWorker.KEY_UPDATE_STATUS)
+            if (status == ContentSyncWorker.STATUS_UPDATE_AVAILABLE) {
+                pendingVersion = workInfo?.outputData
+                    ?.getInt(ContentSyncWorker.KEY_REMOTE_VERSION, -1) ?: -1
+                showUpdateBanner = true
+            }
+        }
+    }
+
+    // Reset tag when category or setting changes
+    LaunchedEffect(selectedCategory, selectedSetting) {
+        selectedTag = "Any"
+        generatedText = null
+    }
+
+    // ── Layout ────────────────────────────────────────────────────────────────
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+
+        Text(
+            text = "📖 GM Generator",
+            style = MaterialTheme.typography.headlineMedium,
+            fontWeight = FontWeight.Bold,
+        )
+
+        // ── Update banner ─────────────────────────────────────────────────────
+        AnimatedVisibility(visible = showUpdateBanner) {
+            UpdateBanner(
+                onUpdate = {
+                    isDownloading = true
+                    scope.launch {
+                        downloader.downloadAndCache(
+                            remoteVersion = pendingVersion,
+                            categories    = Category.entries.map { it.key },
+                        )
+                        isDownloading = false
+                        showUpdateBanner = false
+                    }
+                },
+                onDismiss = { showUpdateBanner = false },
+                isDownloading = isDownloading,
+            )
+        }
+
+        // ── Category selector ─────────────────────────────────────────────────
+        Text("What to generate", style = MaterialTheme.typography.labelLarge)
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Category.entries.forEach { cat ->
+                FilterChip(
+                    selected = selectedCategory == cat,
+                    onClick  = { selectedCategory = cat },
+                    label    = { Text(cat.label) },
+                )
+            }
+        }
+
+        // ── Setting selector ──────────────────────────────────────────────────
+        Text("Setting", style = MaterialTheme.typography.labelLarge)
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Setting.entries.forEach { setting ->
+                FilterChip(
+                    selected = selectedSetting == setting,
+                    onClick  = { selectedSetting = setting },
+                    label    = { Text("${setting.emoji} ${setting.label}") },
+                )
+            }
+        }
+
+        // ── Tag filter ────────────────────────────────────────────────────────
+        Text("Filter by tag", style = MaterialTheme.typography.labelLarge)
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            val tags = TAGS_BY_CATEGORY[selectedCategory] ?: listOf("Any")
+            tags.forEach { tag ->
+                FilterChip(
+                    selected = selectedTag == tag,
+                    onClick  = { selectedTag = tag },
+                    label    = { Text(tag.replaceFirstChar { it.uppercase() }) },
+                )
+            }
+        }
+
+        // ── Generate button ───────────────────────────────────────────────────
+        Button(
+            onClick = {
+                isLoading = true
+                scope.launch {
+                    generatedText = generate(db, selectedCategory, selectedSetting, selectedTag)
+                    isLoading = false
+                }
+            },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = !isLoading,
+        ) {
+            if (isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(18.dp),
+                    strokeWidth = 2.dp,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                )
+                Spacer(Modifier.width(8.dp))
+                Text("Generating…")
+            } else {
+                Icon(Icons.Default.Refresh, contentDescription = null)
+                Spacer(Modifier.width(8.dp))
+                Text("Generate ${selectedCategory.label.dropLast(1)}")
+            }
+        }
+
+        // ── Result card ───────────────────────────────────────────────────────
+        AnimatedVisibility(
+            visible = generatedText != null,
+            enter   = fadeIn() + slideInVertically(),
+        ) {
+            generatedText?.let { text ->
+                ResultCard(text = text)
+            }
+        }
+
+        // Empty state
+        if (generatedText == null && !isLoading) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 32.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = "Tap Generate to describe a ${selectedCategory.label.dropLast(1).lowercase()}",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontStyle = FontStyle.Italic,
+                )
+            }
+        }
+    }
+}
+
+// ── Sub-components ────────────────────────────────────────────────────────────
+
+@Composable
+fun UpdateBanner(
+    onUpdate: () -> Unit,
+    onDismiss: () -> Unit,
+    isDownloading: Boolean,
+) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.tertiaryContainer
+        ),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text("New content available", fontWeight = FontWeight.SemiBold)
+                Text(
+                    "Fresh scenes, NPCs, and items are ready.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
+            if (isDownloading) {
+                CircularProgressIndicator(modifier = Modifier.size(24.dp), strokeWidth = 2.dp)
+            } else {
+                Row {
+                    TextButton(onClick = onDismiss) { Text("Later") }
+                    TextButton(onClick = onUpdate)  { Text("Update") }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun ResultCard(text: String) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
+        ),
+    ) {
+        Text(
+            text = text,
+            modifier = Modifier.padding(16.dp),
+            style = MaterialTheme.typography.bodyLarge,
+            lineHeight = 26.sp,
+        )
+    }
+}
+
+// ── Template engine ───────────────────────────────────────────────────────────
+
+/**
+ * Picks a random matching entry from the local DB,
+ * then fills its template string with random picks from its word lists.
+ */
+suspend fun generate(
+    db: AppDatabase,
+    category: Category,
+    setting: Setting,
+    tag: String,
+): String {
+    // Fetch by category (and optionally tag)
+    val candidates = if (tag == "Any") {
+        db.contentDao().getByCategory(category.key)
+    } else {
+        db.contentDao().getByCategoryAndTag(category.key, tag)
+    }
+
+    // Filter by setting client-side (settings is a JSON array in the entry)
+    val entries = if (setting == Setting.ANY) {
+        candidates
+    } else {
+        candidates.filter { entry ->
+            val obj = JSONObject(entry.dataJson)
+            val settingsArr = obj.optJSONArray("settings") ?: return@filter false
+            (0 until settingsArr.length()).any { settingsArr.getString(it) == setting.key }
+        }
+    }
+
+    if (entries.isEmpty()) return "No content found for this combination. Try a different setting or tag."
+
+    val entry = entries[Random.nextInt(entries.size)]
+    return fillTemplate(entry)
+}
+
+/**
+ * Parses the entry's dataJson and replaces {placeholders} in the template
+ * with random picks from the matching JSON arrays.
+ */
+private fun fillTemplate(entry: ContentEntry): String {
+    val obj      = JSONObject(entry.dataJson)
+    val template = obj.optString("template", "")
+
+    // Collect all array fields as potential replacement pools
+    val pools = mutableMapOf<String, List<String>>()
+    obj.keys().forEach { key ->
+        val value = obj.opt(key)
+        if (value is org.json.JSONArray) {
+            pools[key] = (0 until value.length()).map { value.getString(it) }
+        }
+    }
+
+    // Replace {placeholder} tokens
+    var result = template
+    val regex = Regex("""\{(\w+)\}""")
+    regex.findAll(template).forEach { match ->
+        val token = match.groupValues[1]
+        val pool  = pools[token] ?: pools[similarKey(token, pools.keys)] ?: return@forEach
+        val replacement = pool[Random.nextInt(pool.size)]
+        result = result.replace(match.value, replacement)
+    }
+
+    // Append a random detail line if available
+    pools["details"]?.let { details ->
+        result += " " + details[Random.nextInt(details.size)]
+    }
+
+    return result.trim()
+}
+
+/**
+ * Fuzzy-matches a template token to an available pool key.
+ * e.g. "adj" → "adjectives", "type" → "types"
+ */
+private fun similarKey(token: String, keys: Set<String>): String? =
+    keys.firstOrNull { it.startsWith(token) }
+
+// ── Preview ───────────────────────────────────────────────────────────────────
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun GeneratorScreenPreview() {
+    MaterialTheme {
+        GeneratorScreen()
+    }
+}

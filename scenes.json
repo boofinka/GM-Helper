@@ -1,0 +1,254 @@
+{
+  "scenes": [
+    {
+      "id": "scene_001",
+      "settings": ["fantasy"],
+      "tags": ["dungeon", "dark", "abandoned"],
+      "adjectives": ["crumbling", "forsaken", "silent", "oppressive"],
+      "nouns": ["corridor", "chamber", "hall", "antechamber"],
+      "atmosphere": [
+        "The air is thick with the smell of mildew and old stone.",
+        "A faint dripping echoes from somewhere deeper within.",
+        "Dust motes hang suspended in the still air.",
+        "The silence here feels deliberate, as if something is listening."
+      ],
+      "details": [
+        "Rusted iron sconces line the walls, their torches long since burned out.",
+        "Faded murals depict a civilization that clearly met a bad end.",
+        "The floor is cracked, with pale roots pushing through the gaps.",
+        "Something has scratched deep grooves into the stone near the entrance."
+      ],
+      "exits": [
+        "A low archway to the north is sealed with a rusted portcullis.",
+        "To the east, a wooden door hangs half off its hinges.",
+        "A spiral staircase descends into darkness in the far corner."
+      ],
+      "template": "You stand in a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_002",
+      "settings": ["fantasy"],
+      "tags": ["urban", "tavern", "lively"],
+      "adjectives": ["smoke-filled", "rowdy", "warm", "bustling"],
+      "nouns": ["tavern", "inn", "alehouse", "common room"],
+      "atmosphere": [
+        "The smell of roasting meat and spilled ale hangs in the air.",
+        "A bard in the corner is playing something almost recognizable.",
+        "Laughter and argument compete for dominance across the room.",
+        "Firelight throws long shadows across the low-beamed ceiling."
+      ],
+      "details": [
+        "A group of off-duty guards argue loudly over a game of dice.",
+        "The barkeep polishes a tankard with a rag that makes it dirtier.",
+        "Someone has carved their name — and a rude drawing — into your table.",
+        "A hooded figure in the corner hasn't touched their drink."
+      ],
+      "exits": [
+        "Stairs at the back lead up to the rooms for let.",
+        "A side door near the kitchen is propped open with a cask.",
+        "The main entrance lets in a gust of cold air every time it swings open."
+      ],
+      "template": "You enter a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_003",
+      "settings": ["fantasy", "supernatural"],
+      "tags": ["wilderness", "forest", "eerie"],
+      "adjectives": ["ancient", "fog-shrouded", "tangled", "hushed"],
+      "nouns": ["forest", "grove", "wood", "clearing"],
+      "atmosphere": [
+        "The canopy blocks most of the light, leaving the world grey and damp.",
+        "Birds have gone silent here. Only the wind moves.",
+        "Twisted roots make the ground treacherous underfoot.",
+        "Something about this place makes the hairs on the back of your neck rise."
+      ],
+      "details": [
+        "The trees here are old — far older than the kingdom above ground.",
+        "Crude markers made of sticks and bone line the path at intervals.",
+        "A circle of mushrooms rings a patch of ground where nothing else grows.",
+        "You notice that no two trees cast shadows in the same direction."
+      ],
+      "exits": [
+        "A deer trail winds northeast, barely visible in the undergrowth.",
+        "The sound of running water comes from somewhere to the west.",
+        "The path behind you seems subtly different from how you remember it."
+      ],
+      "template": "You push into a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_004",
+      "settings": ["fantasy", "noir"],
+      "tags": ["urban", "market", "daytime"],
+      "adjectives": ["crowded", "chaotic", "colourful", "noisy"],
+      "nouns": ["market square", "bazaar", "trading post", "plaza"],
+      "atmosphere": [
+        "Vendors shout over one another in a half-dozen languages.",
+        "The smell of spices, fish, and livestock compete for dominance.",
+        "Children dart between adult legs, chasing each other or picking pockets.",
+        "Every surface is draped with goods — cloth, produce, caged animals."
+      ],
+      "details": [
+        "A street performer swallows fire to a modest crowd nearby.",
+        "Two merchants are having a furious, whispered argument over a ledger.",
+        "A city guard leans against a post, watching everyone with tired eyes.",
+        "Pinned to a noticeboard: wanted posters, a missing child notice, a tax decree."
+      ],
+      "exits": [
+        "The main road leads north toward the city gate.",
+        "A narrow alley between two stalls disappears into shadow.",
+        "Wide steps lead up to the civic hall at the square's eastern edge."
+      ],
+      "template": "The party arrives at a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_005",
+      "settings": ["scifi"],
+      "tags": ["abandoned", "dark", "industrial"],
+      "adjectives": ["derelict", "depressurised", "flickering", "sealed"],
+      "nouns": ["corridor", "docking bay", "processing deck", "crew compartment"],
+      "atmosphere": [
+        "Emergency lighting casts everything in dim red.",
+        "The life support hum is gone. The silence is louder than it should be.",
+        "Condensation drips from ruptured coolant lines in the ceiling.",
+        "Every surface is filmed with a grey dust that doesn't quite look like dust."
+      ],
+      "details": [
+        "Scorch marks radiate outward from a sealed bulkhead door.",
+        "Personal effects — a photo, a meal tin, a boot — lie where they were dropped.",
+        "A terminal on the wall cycles through an error message no one has cleared.",
+        "The floor grating has been torn up and never replaced."
+      ],
+      "exits": [
+        "An airlock to starboard shows a green light. It shouldn't.",
+        "A maintenance shaft runs aft, just wide enough to crawl through.",
+        "The blast doors ahead are manually wedged open with a cargo strut."
+      ],
+      "template": "You move through a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_006",
+      "settings": ["scifi"],
+      "tags": ["urban", "populated", "corporate"],
+      "adjectives": ["overcrowded", "neon-lit", "sterile", "surveilled"],
+      "nouns": ["transit hub", "commercial concourse", "hab-block atrium", "processing centre"],
+      "atmosphere": [
+        "Advertising drones drift overhead, reading biometrics before choosing their pitch.",
+        "The crowd moves in the practised way of people who have learned not to make eye contact.",
+        "A synthetic voice announces something in three languages. No one looks up.",
+        "The air recyclers are losing the fight against the smell of food and bodies."
+      ],
+      "details": [
+        "Security drones trace slow arcs above the crowd, lenses sweeping.",
+        "A protest — or what's left of one — has been painted over but not quite erased.",
+        "A woman in a corporate uniform stares at her comm implant, expression unreadable.",
+        "Someone has jammed the nearest surveillance node with a loop of static."
+      ],
+      "exits": [
+        "A mag-lev platform to the upper levels requires a tier-two access chip.",
+        "A service corridor behind the vendor stalls is technically off-limits.",
+        "The main exit feeds into an ID checkpoint queue thirty people deep."
+      ],
+      "template": "The crew arrives at a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_007",
+      "settings": ["noir"],
+      "tags": ["urban", "dark", "indoor"],
+      "adjectives": ["smoke-choked", "dim", "shabby", "rain-soaked"],
+      "nouns": ["office", "bar", "back room", "hotel lobby"],
+      "atmosphere": [
+        "The blinds cut the streetlight into thin stripes across the floor.",
+        "Somewhere a radiator is knocking. It hasn't been fixed in years.",
+        "Rain taps against the window in the irregular way that keeps you awake.",
+        "The whole place smells of cigarettes, cheap cologne, and bad decisions."
+      ],
+      "details": [
+        "A glass sits on the desk with just enough left in it to be tempting.",
+        "The phone hasn't rung in three days. Tonight it does.",
+        "Someone has been through the files. They were careful. Not careful enough.",
+        "A hat and coat on the rack belong to someone who hasn't come back for them."
+      ],
+      "exits": [
+        "The fire escape rattles in the wind outside the window.",
+        "A door to the back opens onto an alley that smells like the city gave up.",
+        "The main stairs creak on the third step — useful for knowing who's coming."
+      ],
+      "template": "You're in a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_008",
+      "settings": ["noir"],
+      "tags": ["urban", "outdoor", "night"],
+      "adjectives": ["rain-slicked", "foggy", "empty", "watched"],
+      "nouns": ["street corner", "dockside", "parking lot", "underpass"],
+      "atmosphere": [
+        "The streetlights are doing their best. It isn't enough.",
+        "A car idles at the far end of the block. It's been there a while.",
+        "Fog off the water turns every light into a smear.",
+        "Footsteps behind you. Then none. Then again."
+      ],
+      "details": [
+        "A newspaper blows past. The headline is about someone you've heard of.",
+        "Chalk markings on the pavement look too deliberate to be children's drawings.",
+        "A payphone rings as you pass. You keep walking. It keeps ringing.",
+        "Someone dropped a matchbook here recently. The name on it rings a bell."
+      ],
+      "exits": [
+        "A cab idles at the curb. The driver doesn't look at you.",
+        "An unlit stairwell leads down to a door with no number.",
+        "The bridge ahead has one working lamp and two men standing under it."
+      ],
+      "template": "You step into a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_009",
+      "settings": ["supernatural"],
+      "tags": ["indoor", "dark", "haunted"],
+      "adjectives": ["still", "cold", "wrong", "watchful"],
+      "nouns": ["room", "hallway", "cellar", "attic"],
+      "atmosphere": [
+        "The temperature drops sharply as you cross the threshold.",
+        "Something in the room has moved since the last person was here. Nothing living.",
+        "A low tone — not quite a sound — sits at the edge of perception.",
+        "The shadows in the corners are darker than the light allows."
+      ],
+      "details": [
+        "Every mirror in the room has been covered with a cloth.",
+        "A child's drawing on the wall depicts the room as it looks now, dated thirty years ago.",
+        "The dust on the floor is undisturbed — except for a single set of footprints going nowhere.",
+        "Flowers in a vase are perfectly fresh. The water is black."
+      ],
+      "exits": [
+        "The door you came through is open. You're certain you closed it.",
+        "A second door leads somewhere the floorplan doesn't account for.",
+        "The window looks out onto a view that doesn't match the street outside."
+      ],
+      "template": "You enter a {adj} {noun}. {atmosphere} {detail} {exit}"
+    },
+    {
+      "id": "scene_010",
+      "settings": ["supernatural", "fantasy"],
+      "tags": ["outdoor", "eerie", "liminal"],
+      "adjectives": ["thin", "between", "hollow", "breathless"],
+      "nouns": ["crossroads", "shoreline", "threshold", "borderland"],
+      "atmosphere": [
+        "The light here is wrong — too flat, from no direction in particular.",
+        "Sound travels strangely. Voices carry from far away. Nearby things are silent.",
+        "You have the distinct sense this place exists between other places.",
+        "Time feels unreliable. You may have been standing here longer than you think."
+      ],
+      "details": [
+        "Offerings have been left here — old coins, tied cloth, a tooth.",
+        "The ground is worn smooth by feet that aren't yours.",
+        "Something is visible at the edge of vision that isn't there when looked at directly.",
+        "A name has been spoken here many times. You don't know whose. You nearly do."
+      ],
+      "exits": [
+        "One direction feels like forward. The others feel like choices.",
+        "A path leads somewhere. Whether it leads there the same way twice is unclear.",
+        "Turning back feels possible, technically."
+      ],
+      "template": "You find yourself at a {adj} {noun}. {atmosphere} {detail} {exit}"
+    }
+  ]
+}
