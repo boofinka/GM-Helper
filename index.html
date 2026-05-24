@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GM Helper - RPG Description Generator</title>
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="app-container">
+
+    <!-- ── Header ───────────────────────────────────────────────────────────── -->
+    <header class="app-header">
+      <h1 class="glow-title">📖 GM Helper</h1>
+      <p class="subtitle">Immersive descriptors for Tabletop Game Masters</p>
+    </header>
+
+
+
+    <!-- ── Main Workspace ───────────────────────────────────────────────────── -->
+    <main class="main-content">
+
+      <!-- ── Top: Controls Panel ────────────────────────────────────────────── -->
+      <section class="controls-panel panel">
+        <div class="controls-grid">
+          <!-- Category Selector -->
+          <div class="control-group">
+            <label class="group-label">What to generate</label>
+            <div class="chip-group" id="category-group">
+              <button class="chip active" data-category="scenes">Scenes</button>
+              <button class="chip" data-category="npcs">NPCs</button>
+              <button class="chip" data-category="items">Items</button>
+            </div>
+          </div>
+
+          <!-- Setting Selector -->
+          <div class="control-group">
+            <label class="group-label">Setting</label>
+            <div class="chip-group" id="setting-group">
+              <button class="chip active" data-setting="any">Any</button>
+              <button class="chip" data-setting="fantasy">Fantasy</button>
+              <button class="chip" data-setting="scifi">Sci-Fi</button>
+              <button class="chip" data-setting="noir">Noir</button>
+              <button class="chip" data-setting="supernatural">Supernatural</button>
+              <button class="chip" data-setting="modern">Modern</button>
+            </div>
+          </div>
+
+          <!-- Tag Selector -->
+          <div class="control-group">
+            <label class="group-label">Filter by tag</label>
+            <div class="chip-group" id="tag-group">
+              <!-- Dynamic tags populated by JS -->
+            </div>
+          </div>
+
+          <!-- Free-text search -->
+          <div class="control-group">
+            <label class="group-label">Search descriptions</label>
+            <input id="search-input" class="search-input" type="text" placeholder="Describe what you want (e.g. 'foggy market' or 'wounded merchant')" />
+          </div>
+        </div>
+
+        <!-- Generate Action -->
+        <button id="btn-generate" class="btn-generate">
+          <span class="btn-icon">✨</span>
+          <span id="btn-generate-text">Generate Description</span>
+        </button>
+      </section>
+
+      <!-- ── Bottom: Output Display ────────────────────────────────────────────── -->
+      <section class="display-panel">
+        <div class="display-wrapper">
+          <!-- Empty State -->
+          <div id="empty-state" class="empty-state">
+            <p>Tap Generate to describe <span id="category-article">a</span> <span id="category-hint">scene</span></p>
+          </div>
+
+          <!-- Loader -->
+          <div id="loader" class="loader-container hidden">
+            <div class="spinner"></div>
+            <p>Generating description...</p>
+          </div>
+
+          <!-- Result Card -->
+          <div id="result-card" class="result-card panel hidden">
+            <div class="result-body">
+              <p id="result-text"></p>
+            </div>
+            <div class="result-footer">
+              <span id="result-tag" class="meta-tag">Fantasy</span>
+              <button id="btn-copy" class="btn-icon-copy" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── Toast Notification ────────────────────────────────────────────────── -->
+    <div id="toast" class="toast hidden">Copied to clipboard!</div>
+
+  </div>
+
+  <!-- App Logic -->
+  <script type="module" src="/app.js"></script>
+</body>
+
+</html>
