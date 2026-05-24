@@ -16,3 +16,6 @@ yarn-error.log*
 
 # Environment
 .env
+
+# Local agent settings (keep private)
+.agent.settings.md
