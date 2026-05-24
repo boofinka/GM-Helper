@@ -19,3 +19,6 @@ yarn-error.log*
 
 # Local agent settings (keep private)
 .agent.settings.md
+
+# Ignore root built copy — keep only dist/index.html
+/index.html
