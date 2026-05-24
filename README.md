@@ -9,7 +9,7 @@ Prerequisites: Node.js (16+) and npm.
 Install dependencies and start the Vite dev server:
 
 ```powershell
-cd "c:\Users\yotam\Documents\coding\github\GM-Helper"
+cd "PATH/TO/CODE"
 npm install
 npm run dev
 ```
